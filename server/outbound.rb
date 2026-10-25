@@ -6,3 +6,10 @@ post '/send/:who' do
     ok, out = send_sms(number, text)
     ok ? "sent\n" : halt(502, out)
 end
+
+get '/debug/send' do
+    number = CONTACTS.values.first
+    text = "This is a test at #{Time.now.to_s}!"
+    ok, out = send_sms(number, text)
+    ok ? "sent\n" : halt(502, out)
+end
