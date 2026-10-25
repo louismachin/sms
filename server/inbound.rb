@@ -5,7 +5,7 @@ COMMANDS = {
 }.freeze
 
 post '/incoming' do
-    halt 401 unless secure_eq?(request.env['HTTP_X_BRIDGE_SECRET'], ENV.fetch('BRIDGE_SECRET'))
+    halt 401 unless secure_eq?(request.env['HTTP_X_SMS_SECRET'], ENV.fetch('SMS_SECRET'))
     msg = JSON.parse(request.body.read)
     from, body = msg.values_at('from', 'body')
 
