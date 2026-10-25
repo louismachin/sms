@@ -50,3 +50,7 @@ require_relative './outbound'
 require_relative './inbound'
 
 get('/health') { adb('get-state').first.strip == 'device' ? "ok\n" : halt(503, "phone missing\n") }
+
+not_found do
+    halt 418
+end
