@@ -35,7 +35,7 @@ def send_sms(number, text)
         '--es', 'to', number,
         '--es', 'body', text
     )
-    status.success? && out.include?('result=0') ? [true, out] : [false, out]
+    status&.success? && out.include?('result=200') ? [true, out] : [false, out]
 end
 
 # Phone's 127.0.0.1:4535 -> this server, over USB. Lost on phone reboot/replug.
@@ -47,3 +47,5 @@ require_relative './outbound'
 require_relative './inbound'
 
 get('/health') { adb('get-state').first.strip == 'device' ? "ok\n" : halt(503, "phone missing\n") }
+
+puts send_sms('07562215521', 'Hello world!').inspect
