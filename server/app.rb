@@ -4,6 +4,7 @@
 #   POST /incoming       called by the phone (X-Sms-Secret: $SMS_SECRET)
 #
 # Env: SMS_TOKEN, SMS_SECRET, optional ADB_SERIAL
+
 require 'sinatra'
 require 'json'
 require 'open3'
@@ -47,5 +48,3 @@ require_relative './outbound'
 require_relative './inbound'
 
 get('/health') { adb('get-state').first.strip == 'device' ? "ok\n" : halt(503, "phone missing\n") }
-
-puts send_sms('07562215521', 'Hello world!').inspect

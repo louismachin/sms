@@ -1,3 +1,5 @@
 .env
 contacts.yml
 .DS_Store
+smsbridge.apk*
+build
