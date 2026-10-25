@@ -16,6 +16,8 @@ Dotenv.load(File.expand_path('../.env', __dir__))
 
 set :port, Integer(ENV.fetch('PORT'))
 set :bind, '127.0.0.1' # reverse proxy
+set :environment, :production
+disable :protection
 
 PKG = 'com.louismachin.smsbridge'
 
